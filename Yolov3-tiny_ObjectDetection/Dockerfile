@@ -1,5 +1,5 @@
 # base image
-FROM python:3.11
+FROM python
 
 # specify working directory
 WORKDIR /code
@@ -8,8 +8,8 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 
 # install packages
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-
+RUN pip install --no-cache-dir --upgrade pip setuptools \
+    && pip install --no-cache-dir --upgrade -r requirements.txt
 # copy application code
 COPY ./app /code/app
 
